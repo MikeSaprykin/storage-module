@@ -99,7 +99,11 @@ export class StorageService {
    * @param key
    */
   public getItem(key: string): any {
-    return JSON.parse(this.storage.getItem(key));
+    try {
+      return JSON.parse(this.storage.getItem(key));
+    } catch (e) {
+      return this.storage.getItem(key)
+    }
   }
 
 
